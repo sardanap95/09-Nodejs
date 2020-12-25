@@ -46,9 +46,8 @@ const questions = [
 
 inquirer.prompt(questions).then((data) => {
   fs.writeFile(
-    data.title + "-README.md",
+    "output/" + data.title + "-README.md",
     `# **${data.title}**
-
 ## Description 
 
 ${data.description}
@@ -58,36 +57,32 @@ ${data.description}
 - [Description](#Description)
 - [Installation](#Installation)
 - [Usage](#Usage)
-- [Licence](#Licence)
 - [Test](#Test)
 - [Contributors](#Contributors)    
-- [Repository Link](#Repository)
 - [Questions](#Questions) 
-
+- [Licence](#Licence)
 
 ## Installation
-
-    ${data.installation}  
+    This is a mandatory command to get started with our app.
+    - ${data.installation}  
 
 ## Usage
-
-    ${data.usage}
+    Please run the following commands to run the app.
+    - ${data.usage}
 
 ## Test
-
-    ${data.test}
-
-## Licence
-
-    ${data.licence}
+    You can test our app with following commands.
+    - ${data.test}
 
 ## Contributors
-
-    ${data.contributing}
+    Following are our amazing folks who have added a lot to this project. Consider donating them via PayPal!
+    - ${data.contributing}
 
 ## Questions
+    You can reach out to me for any kinds of questions or bug reports at ${data.questions}  
 
-    ${data.questions}  
+## Licence
+    This project is licensed under ${data.licence}
   `,
     function (err) {
       if (err) {
