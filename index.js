@@ -45,54 +45,55 @@ const questions = [
 ];
 
 inquirer.prompt(questions).then((data) => {
-  const readmeFile = `
-    # **${data.title}**
+  fs.writeFile(
+    data.title + "-README.md",
+    `# **${data.title}**
 
-    ## Description 
-    
-    ${data.description}
-    
-    ## Table of contents
-    
-    - [Description](#Description)
-    - [Installation](#Installation)
-    - [Usage](#Usage)
-    - [Licence](#Licence)
-    - [Test](#Test)
-    - [Contributors](#Contributors)    
-    - [Repository Link](#Repository)
-    - [Questions](#Questions) 
-    
-    
-    ## Installation
+## Description 
 
-        ${data.installation}  
+${data.description}
 
-    ## Usage
-    
-        ${data.usage}
+## Table of contents
 
-    ## Test
-    
-        ${data.test}
-    
-    ## Licence
-    
-        ${data.licence}
-    
-    ## Contributors
-    
-        ${data.contributing}
-    
-    ## Questions
+- [Description](#Description)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Licence](#Licence)
+- [Test](#Test)
+- [Contributors](#Contributors)    
+- [Repository Link](#Repository)
+- [Questions](#Questions) 
 
-        ${data.questions}
-  
-  `;
-  fs.writeFile(data.title + "-README.md", readmeFile, function (err) {
-    if (err) {
-      throw err;
+
+## Installation
+
+    ${data.installation}  
+
+## Usage
+
+    ${data.usage}
+
+## Test
+
+    ${data.test}
+
+## Licence
+
+    ${data.licence}
+
+## Contributors
+
+    ${data.contributing}
+
+## Questions
+
+    ${data.questions}  
+  `,
+    function (err) {
+      if (err) {
+        throw err;
+      }
+      console.log(data.title + "-README.md  created with successfully.");
     }
-    console.log(data.title + "-README.md  created with successfully.");
-  });
+  );
 });
